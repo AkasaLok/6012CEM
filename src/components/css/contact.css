@@ -1,11 +1,11 @@
-.about-container{
+.contact-container{
     display: flex;
     flex-direction: row;
     align-items: start;
     justify-content: center;
 }
 
-.about-sidecontainer{
+.contact-sidecontainer{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,25 +14,36 @@
     max-width: 700px;
 }
 
-.about-title{
+.contact-title{
     font-family: 'SeoulNamsan', sans-serif;
     font-size: 42px;
     font-weight: 500;
     color: #e91e63;
 }
 
-.about-subtitle{
+.contact-subtitle{
     font-family: 'SeoulNamsan', sans-serif;
-    font-size: 28px;
+    font-size: 32px;
     font-weight: 500;
     color: black;
 }
 
-.about-text{
+.contact-righttext{
     font-family: 'SeoulNamsan', sans-serif;
     font-size: 20px;
     font-weight: 500;
     color: black;
-    line-height: 1.5;
+    line-height: 1.4;
     text-align: start;
+    width: 600px;
+}
+
+.contact-text{
+    font-family: 'SeoulNamsan', sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: black;
+    line-height: 1.8;
+    text-align: start;
+    width: 500px;
 }

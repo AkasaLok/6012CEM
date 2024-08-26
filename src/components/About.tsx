@@ -4,6 +4,7 @@ export function About(){
     return (
         <div className="about-container">
             <div className="about-sidecontainer">
+                <br></br>
                 <span className="about-title">
                     About Toronto Cupcake
                 </span>
@@ -22,6 +23,7 @@ export function About(){
                 <span className="about-subtitle">...............</span>
             </div>
             <div className="about-sidecontainer">
+                <br></br>
                 <span className="about-subtitle">...............</span>
                 <br></br>
                 <img src="img/about-main.png" style={{borderRadius:10}}></img>
