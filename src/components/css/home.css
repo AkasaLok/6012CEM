@@ -1,0 +1,38 @@
+.home-container{
+    display: flex;
+    align-items: start;
+    text-align: left;
+    padding-left: 25px;
+    padding-right: 25px;
+    flex-direction: column;
+}
+
+.home-paragraph-image-container{
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.home-paragraph{
+    text-align: left;
+    font-family: 'SeoulNamsan', sans-serif;
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.home-image-container{
+    position: relative;
+    width: 600px;
+    height: 260px;
+}
+
+.home-image{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    max-width: 120%;
+    max-height: 120%;
+    object-fit: contain;
+}
