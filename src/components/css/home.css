@@ -1,6 +1,6 @@
 .home-container{
     display: flex;
-    align-items: start;
+    align-items: center;
     text-align: left;
     padding-left: 25px;
     padding-right: 25px;
@@ -10,7 +10,7 @@
 .home-paragraph-image-container{
     display: flex;
     align-items: start;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
 }
 
@@ -20,12 +20,14 @@
     font-size: 26px;
     font-weight: 500;
     line-height: 1.5;
+    justify-content: center;
 }
 
 .home-image-container{
     position: relative;
     width: 600px;
     height: 260px;
+    padding-left: 55px;
 }
 
 .home-image{
