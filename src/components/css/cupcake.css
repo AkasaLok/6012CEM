@@ -1,0 +1,46 @@
+.cupcake-container{
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.cupcake-title{
+    font-family: 'SeoulNamsan', sans-serif;
+    font-size: 38px;
+    font-weight: 500;
+    color: #e91e63;
+}
+
+.cupcake-text{
+    font-family: 'SeoulNamsan', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: black;
+}
+
+.cupcake-card-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cupcake-card{
+    width: 250px;
+    height: 370px;
+    overflow: hidden;
+}
+
+.cupcake-card-actioncontainer{
+    display: flex;
+    flex-direction: row;
+    width: 250px;
+    justify-content: center;
+}
+
+.cupcake-card-textfield{
+    height: 20px;
+    width: 30px;
+    justify-content: center;
+}
