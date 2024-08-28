@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardActions, CardContent, CardMedia, makeStyles, TextField, Typography } from "@mui/material";
+import { Box, Button, Card, CardActions, CardContent, CardMedia, TextField, Typography } from "@mui/material";
 import { Cupcake } from "../models/cupcakes";
 import "../components/css/cupcake.css"
 
@@ -40,7 +40,7 @@ export function CupcakeCard(props: CupcakeCardProps){
                         defaultValue="1"
                         size="small"
                         onKeyDown={(event) => {
-                            if (!/[0-9]/.test(event.key) && event.key != 'Backspace') 
+                            if (!/[0-9]/.test(event.key) && event.key !== 'Backspace') 
                             {
                                 event.preventDefault();
                             }
