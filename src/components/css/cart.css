@@ -1,0 +1,133 @@
+.cart-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: start;
+}
+
+.cart-sub-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.cart-sub-container2{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.cart-sub-container3{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.cart-title{
+    font-family: 'SeoulNamsan', sans-serif;
+    font-size: 42px;
+    font-weight: 500;
+    color: black;
+    padding-left: 10px;
+}
+
+.cart-text{
+    font-family: 'SeoulNamsan', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #6b6b6b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 25px;
+}
+
+.cart-line{
+    width: 100%;
+    height: 1px;
+    background-color: #7c7c7c;
+}
+
+.cart-product-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    width: 100%;
+}
+
+.cart-product-card{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.cart-product-card-name-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cart-product-card-name{
+    font-family: 'SeoulNamsan', sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: black;
+    display: flex;
+    padding-left: 25px;
+    text-align: left;
+}
+
+.cart-product-card-price{
+    font-family: 'SeoulNamsan', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #6b6b6b;
+    display: flex;
+    padding-left: 25px;
+}
+
+.cart-product-quantity-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-left: 40px;
+}
+
+.cart-product-quantity-border{
+    width: 150px;
+    height: 55px;
+    border-radius: 10px;
+    border: 1px solid #6b6b6b;
+    box-shadow: 0px 3px rgba(107, 107, 107, 0.5);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-product-quantity-text{
+    font-family: 'SeoulNamsan', sans-serif;
+    font-size: 28px;
+    font-weight: 500;
+    color: #6b6b6b;
+    display: flex;
+}
+
+.cart-product-totalprice-container{
+    display: flex;
+    align-items: center;
+    width: 10%;
+    justify-content: end;
+    text-align: right;
+}
+
+.card-product-totalprice{
+    font-family: 'SeoulNamsan', sans-serif;
+    font-size: 28px;
+    font-weight: 500;
+    color: black;
+}
