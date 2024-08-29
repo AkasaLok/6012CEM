@@ -1,14 +1,37 @@
 import { Box, Button, Card, CardActions, CardContent, CardMedia, TextField, Typography } from "@mui/material";
 import { Cupcake } from "../models/cupcakes";
 import "../components/css/cupcake.css"
+import { useState } from "react";
 
 interface CupcakeCardProps{
     cupcake: Cupcake
+    onSelectCupcake: (product: Cupcake, amount: number) => void
 }
 
 export function CupcakeCard(props: CupcakeCardProps){
-
+    const [amount, setAmount] = useState<number>(1);
     let cupcake = props.cupcake;
+
+    const handleSelectCupcake = () => {
+        props.onSelectCupcake(props.cupcake, amount);
+    }
+
+    const handleChangeAmount = (event: React.ChangeEvent<HTMLInputElement>) => {
+
+        var oldAmount = amount;
+
+        if(!/[0-9]/.test(event.target.value)){
+            setAmount(oldAmount);
+            return;
+        }
+
+        if(parseInt(event.target.value) <= 0){
+            setAmount(oldAmount);
+            return;
+        }
+
+        setAmount(parseInt(event.target.value));
+    }
 
     return(
         <Card className="cupcake-card" sx={{
@@ -37,14 +60,15 @@ export function CupcakeCard(props: CupcakeCardProps){
                     </Typography>
                     <TextField className="cupcake-card-textfield"
                         hiddenLabel
-                        defaultValue="1"
                         size="small"
+                        value={amount}
                         onKeyDown={(event) => {
                             if (!/[0-9]/.test(event.key) && event.key !== 'Backspace') 
                             {
                                 event.preventDefault();
                             }
                         }}
+                        onChange={handleChangeAmount}
                         inputProps={{
                             min: 1,
                             max: 1,
@@ -78,6 +102,7 @@ export function CupcakeCard(props: CupcakeCardProps){
                                 boxShadow: "none"
                             }
                         }}
+                        onClick={handleSelectCupcake}
                     >
                         Add To Cart
                     </Button>

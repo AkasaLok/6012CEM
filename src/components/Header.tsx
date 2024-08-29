@@ -9,6 +9,10 @@ export function Header(){
         window.location.href = "/";
     };
 
+    const handleShoppingCartClick = () => {
+        window.location.href = "/cart";
+    };
+
     return(
         <div style={{paddingTop: 10, paddingBottom: 20}}>
             <div className="title-container" style={{display: "flex", paddingBottom: 5}} onClick={handleTitleClick}>
@@ -24,7 +28,7 @@ export function Header(){
                     <a href="/contact" className="navbar-link">Contact</a>
                 </div>
                 <div>
-                    <IconButton>
+                    <IconButton onClick={handleShoppingCartClick}>
                         <ShoppingCart fontSize="large"/>
                     </IconButton>
                 </div>
