@@ -6,16 +6,23 @@ import { SelectedCupcake } from "./Cupcake";
 import { useEffect, useState } from "react";
 import { Add, DeleteOutline, Remove } from "@mui/icons-material";
 
-export function ProductCard(props: SelectedCupcake){
+interface ProductProps{
+    selectedCupcake: SelectedCupcake;
+    onMinusQuantity: (cupcakeId: string) => void;
+    onAddQuantity: (cupcakeId: string) => void;
+    onRemoveProduct: (cupcakeId: string) => void;
+}
+
+export function ProductCard(props: ProductProps){
     const [cupcake, setCupcake] = useState<Cupcake>();
     
     useEffect(() => {
         //Read cupcake data
-        var data = cupcakeTemplateData.find(p => p._id === props.cupcakeId);
+        var data = cupcakeTemplateData.find(p => p._id === props.selectedCupcake.cupcakeId);
         if(data !== undefined){
             setCupcake(data);
         }
-    }, [])
+    }, [props])
 
     return(
         <Card className="cart-product-card" sx={{
@@ -47,19 +54,19 @@ export function ProductCard(props: SelectedCupcake){
             <div className="cart-product-quantity-container">
                 <div className="cart-product-quantity-border">
                     <div>
-                        <IconButton>
+                        <IconButton onClick={() => {props.onMinusQuantity(props.selectedCupcake.cupcakeId)}}>
                             <Remove/>
                         </IconButton>
                     </div>
-                    <span className="cart-product-quantity-text">{props.amount}</span>
+                    <span className="cart-product-quantity-text">{props.selectedCupcake.amount}</span>
                     <div>
-                        <IconButton>
+                        <IconButton onClick={() => {props.onAddQuantity(props.selectedCupcake.cupcakeId)}}>
                             <Add/>
                         </IconButton>
                     </div>
                 </div>
                 <div>
-                    <IconButton>
+                    <IconButton onClick={() => {props.onRemoveProduct(props.selectedCupcake.cupcakeId)}}>
                         <DeleteOutline/>
                     </IconButton>
                 </div>

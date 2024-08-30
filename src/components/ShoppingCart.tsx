@@ -4,12 +4,12 @@ import { useCookies } from "react-cookie";
 import { useEffect, useState } from "react";
 import { SelectedCupcake } from "./Cupcake";
 import { ProductCard } from "./ProductCard";
+import { Cupcake } from "../models/cupcakes";
 
 export function Cart(){
     const [cookies, setCookie] = useCookies(['6012CEM-TorontoCupcake']);
     const [selectedCupcakes, setSelectedCupcakes] = useState<SelectedCupcake[]>([]);
     const cupcakeCookie = cookies['6012CEM-TorontoCupcake'];
-
 
     //Load Cookies at the first time
     useEffect(() => {
@@ -26,6 +26,43 @@ export function Cart(){
         }
 
     }, [selectedCupcakes])
+
+    const handleMinusQuantity = (cupcakeId: string) => {
+        const existingIndex = selectedCupcakes.findIndex(p => p.cupcakeId === cupcakeId);
+
+        if(existingIndex !== -1){
+            var updatedCupcakes = [...selectedCupcakes];
+
+            if(updatedCupcakes[existingIndex].amount > 1){
+
+                updatedCupcakes[existingIndex].amount -= 1;
+                setSelectedCupcakes(updatedCupcakes);
+
+            }
+        }
+    }
+
+    const handleAddQuantity = (cupcakeId: string) => {
+        const existingIndex = selectedCupcakes.findIndex(p => p.cupcakeId === cupcakeId);
+
+        if(existingIndex !== -1){
+            var updatedCupcakes = [...selectedCupcakes];
+            updatedCupcakes[existingIndex].amount += 1;
+
+            setSelectedCupcakes(updatedCupcakes);
+        }
+    }
+
+    const handleRemoveProduct = (cupcakeId: string) => {
+        const existingIndex = selectedCupcakes.findIndex(p => p.cupcakeId === cupcakeId);
+
+        if(existingIndex !== -1){
+            var updatedCupcakes = [...selectedCupcakes];
+            updatedCupcakes.splice(existingIndex, 1);
+            
+            setSelectedCupcakes(updatedCupcakes);
+        }
+    }
 
     return (
         <div className="cart-container">
@@ -75,7 +112,12 @@ export function Cart(){
                 <Row className="cart-product-container">
                     {selectedCupcakes.map((product, number) => (
                         <Col key={number} className="mb-4 ml-5 mr-5" xs='auto' sm='auto' md='auto' lg='auto' style={{width: "100%"}}>
-                            <ProductCard cupcakeId={product.cupcakeId} amount={product.amount}/>
+                            <ProductCard 
+                                selectedCupcake={product}  
+                                onMinusQuantity={handleMinusQuantity}
+                                onAddQuantity={handleAddQuantity}
+                                onRemoveProduct={handleRemoveProduct}
+                            />
                         </Col>
                     ))}
                 </Row>
