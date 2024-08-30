@@ -1,9 +1,9 @@
 import { Col, Row } from "react-bootstrap";
 import "../components/css/cupcake.css";
+import "../components/css/popup.css";
 import { Category, Cupcake, cupcakeTemplateData } from "../models/cupcakes";
 import { CupcakeCard } from "./CupcakeCard";
 import { CupcakeFilter, SortState } from "./CupcakeFilter";
-
 import { useEffect, useRef, useState } from "react";
 import { useCookies } from "react-cookie";
 
@@ -16,6 +16,10 @@ export function Cupcakes(){
     const [cookies, setCookie] = useCookies(['6012CEM-TorontoCupcake']);
     const [selectedCupcakes, setSelectedCupcakes] = useState<SelectedCupcake[]>([]);
     const cupcakeCookie = cookies['6012CEM-TorontoCupcake'];
+
+    const [currentCupcake, setCurrentCupcake] = useState<Cupcake>();
+    const [productDetailPop, setProductDetailPop] = useState<boolean>(false);
+    const [productAddedPop, setProductAddedPop] = useState<boolean>(false);
 
     const [product, setProduct] = useState<Cupcake[]>([]);
     const [amount, setAmount] = useState<number>(0);
@@ -35,6 +39,11 @@ export function Cupcakes(){
         }
 
     }, [selectedCupcakes])
+
+    const closePopup = () => {
+        setProductDetailPop(false);
+        setProductAddedPop(false);
+    };
 
     const filterCupcakes = (sort: SortState, category: {holiday: boolean, specialEvent: boolean, custom: boolean}) => {
         var postFilter = cupcakeTemplateData;
@@ -87,6 +96,13 @@ export function Cupcakes(){
             var updatedCupcakes = [...selectedCupcakes, { cupcakeId: product._id, amount: amount}]
             setSelectedCupcakes(updatedCupcakes);
         }
+
+        setProductAddedPop(true);
+    }
+
+    const handleOpenCupcakeDetail = (product: Cupcake) => {
+        setCurrentCupcake(product);
+        setProductDetailPop(true);
     }
 
     return (
@@ -103,11 +119,35 @@ export function Cupcakes(){
                 <Row className="cupcake-card-container" style={{gap: 20}}>
                     {product.map((product, number) => (
                         <Col key={number} className="mb-4 ml-5 mr-5" xs='auto' sm='auto' md='auto' lg='auto'>
-                            <CupcakeCard cupcake={product} onSelectCupcake={handleSelectCupcake}/>
+                            <CupcakeCard cupcake={product} onSelectCupcake={handleSelectCupcake} onOpenCupcakeDetail={handleOpenCupcakeDetail}/>
                         </Col>
                     ))}
                 </Row>
             </div>
+
+            {
+                productDetailPop &&
+                <div>
+                    <div className="popup-container" onClick={closePopup}>
+                        <div className="popup-image-container">
+                            <h1 className="popup-title">{currentCupcake?.name}</h1>
+                            <br></br>
+                            <span className="popup-text">{currentCupcake?.description}</span>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            {
+                productAddedPop &&
+                <div>
+                    <div className="popup-container" onClick={closePopup}>
+                        <div className="popup-image-container">
+                            <h1 className="popup-title">You added the item to the cart!</h1>
+                        </div>
+                    </div>
+                </div>
+            }
 
         </div>
     )

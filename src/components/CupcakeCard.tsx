@@ -6,6 +6,7 @@ import { useState } from "react";
 interface CupcakeCardProps{
     cupcake: Cupcake
     onSelectCupcake: (product: Cupcake, amount: number) => void
+    onOpenCupcakeDetail: (product: Cupcake) => void
 }
 
 export function CupcakeCard(props: CupcakeCardProps){
@@ -33,6 +34,10 @@ export function CupcakeCard(props: CupcakeCardProps){
         setAmount(parseInt(event.target.value));
     }
 
+    const handleDetail = () => {
+        props.onOpenCupcakeDetail(props.cupcake);
+    }
+
     return(
         <Card className="cupcake-card" sx={{
             display: "flex",
@@ -46,6 +51,7 @@ export function CupcakeCard(props: CupcakeCardProps){
                     component="img"
                     image={cupcake.image}
                     title={cupcake.name}
+                    onClick={handleDetail}
                 />
             </Box>
             <CardContent sx={{paddingBottom: 0}}>
