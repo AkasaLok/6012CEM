@@ -105,6 +105,10 @@ export function Cupcakes(){
         setProductDetailPop(true);
     }
 
+    const handleCheckout = () => {
+        window.location.href = "/cart";
+    }
+
     return (
         <div className="cupcake-container">
             <span className="cupcake-title" style={{paddingBottom: 10}}>Cupcakes | Always Available</span>
@@ -130,9 +134,15 @@ export function Cupcakes(){
                 <div>
                     <div className="popup-container" onClick={closePopup}>
                         <div className="popup-image-container">
-                            <h1 className="popup-title">{currentCupcake?.name}</h1>
+                            <span className="popup-title" style={{paddingTop: "30px", paddingBottom: "0px", fontSize: "32px"}}>{currentCupcake?.name}</span>
                             <br></br>
-                            <span className="popup-text">{currentCupcake?.description}</span>
+                            <div style={{minHeight: "248.75px"}}>
+                                <img src={currentCupcake?.image} alt="" className="popup-image"></img>
+                                { currentCupcake?.descImage !== null && 
+                                    <img src={currentCupcake?.descImage} alt="" className="popup-image"></img>
+                                }
+                            </div>
+                            <span className="popup-text" style={{paddingLeft: "10px", paddingRight: "10px", paddingTop: "15px"}}>{currentCupcake?.description === null ? currentCupcake?.name : currentCupcake?.description }</span>
                         </div>
                     </div>
                 </div>
@@ -143,7 +153,14 @@ export function Cupcakes(){
                 <div>
                     <div className="popup-container" onClick={closePopup}>
                         <div className="popup-image-container">
-                            <h1 className="popup-title">You added the item to the cart!</h1>
+                            <div>
+                                <img src={"img/TickIcon.png"} alt="" className="popup-image" style={{width:"242px", minHeight: "242px", paddingTop: "50px", paddingBottom: "20px"}}></img>
+                            </div>
+                            <span className="popup-title" style={{fontSize: "34px"}} >You added the item to the cart!</span>
+                            <div>
+                                <img src={"img/ContinueButton.png"} alt="" className="popup-image" onClick={closePopup} style={{width:"250px", paddingRight: "40px", cursor: "pointer"}}></img>
+                                <img src={"img/CheckoutButton.png"} alt="" className="popup-image" onClick={handleCheckout} style={{width:"250px", paddingLeft: "40px", cursor: "pointer"}}></img>
+                            </div>
                         </div>
                     </div>
                 </div>

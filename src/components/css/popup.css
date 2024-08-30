@@ -17,6 +17,14 @@
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     width: 700px;
     height: 450px;
+    display: flex;
+    flex-direction: column;
+}
+
+.popup-image{
+    height: auto;
+    width: 199px;
+    object-fit: "contain";
 }
 
 .popup-text-container {
