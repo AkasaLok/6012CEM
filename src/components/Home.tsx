@@ -19,7 +19,7 @@ export function Home(){
                     Delivery available most days between 8 and 6pm TO time.<br></br>
                 </span>
                 <div className="home-image-container" onClick={handleIconClick}>
-                    <img src="img/TO-home-logo.png" className="home-image"></img>
+                    <img src="img/TO-home-logo.png" alt="" className="home-image"></img>
                 </div>
             </div>
             <span className="home-paragraph">

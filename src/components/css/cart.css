@@ -130,4 +130,6 @@
     font-size: 28px;
     font-weight: 500;
     color: black;
+    text-align: end;
+    width: 100%
 }
